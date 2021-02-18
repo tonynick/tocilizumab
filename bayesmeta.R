@@ -1,9 +1,9 @@
 library(bayesmeta)
 library(metafor)
 #mortality tocilizumab
-df<-data.frame(Author=c("COVACTA","EMPACTA","BACC","CORIMUNO","REMAP-CAP"),
-               Ee=c(58,26,9,7,98),Ne=c(294,249,161,63,350),
-               Ec=c(28,11,3,8,142),Nc=c(144,128,82,67,397))
+df<-data.frame(Author=c("Salvarini","COVACTA","EMPACTA","BACC","CORIMUNO","REMAP-CAP","Veiga","RECOVERY"),
+               Ee=c(1,58,26,9,7,98,14,596),Ne=c(63,294,249,161,63,350,65,2022),
+               Ec=c(1,28,11,3,8,142,6,694),Nc=c(60,144,128,82,67,397,64,2094))
 
 df.es<-escalc(measure="RR",ai=Ee,n1i=Ne,ci=Ec,n2i=Nc,slab=Author,data=df)
 
@@ -30,9 +30,9 @@ quantile(riskdiff,c(0.025,0.5,0.975))
 1/quantile(riskdiff,c(0.025,0.5,0.975))
 
 #mechvent tocilizumab
-df<-data.frame(Author=c("COVACTA","EMPACTA","BACC","CORIMUNO"),
-               Ee=c(51,20,11,5),Ne=c(183,249,161,63),
-               Ec=c(33,16,8,14),Nc=c(90,128,81,67))
+df<-data.frame(Author=c("COVACTA","EMPACTA","BACC","CORIMUNO","Veiga","Salvarani","RECOVERY"),
+               Ee=c(51,20,11,5,7,6,215),Ne=c(183,249,161,63,65,60,1754),
+               Ec=c(33,16,8,14,11,5,273),Nc=c(90,128,81,67,64,63,1800))
 td<-TurnerEtAlPrior(outcome="cause-specific mortality / major morbidity event / composite (mortality or morbidity)",comparator1="pharmacological",comparator2="placebo / control")
 
 df.es<-escalc(measure="RR",ai=Ee,n1i=Ne,ci=Ec,n2i=Nc,slab=Author,data=df)
